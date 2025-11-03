@@ -91,9 +91,38 @@ Se utilizó IA como apoyo para estructurar archivos y plantillas técnicas.
 
 ## Reflexiones individuales (colocar en `docs/EVIDENCIAS.md`)
 
-- Integrante A(javiera) : 
-- Integrante B(elias) : [Escribir reflexión propia sin IA]
+# Integrante A(javiera) :
+Aprendizaje técnico:
+Durante el desarrollo del pipeline comprendí cómo integrar pruebas automatizadas en GitHub Actions y cómo estas ayudan a mantener la estabilidad del código. 
+Aprendí a usar pytest para validar endpoints y a configurar Dependabot para detectar dependencias vulnerables.
+También entendí la importancia del análisis de seguridad con Snyk y de aplicar políticas de bloqueo cuando se detectan vulnerabilidades críticas.
+
+Contribución personal:
+Me encargué de crear el Dockerfile y configurar el workflow de integración continua. 
+Mi principal desafío fue comprender el flujo entre checkout, build y push en GitHub Actions, pero logré resolverlo probando y revisando la documentación oficial.
+Me siento satisfecho porque el pipeline ahora automatiza completamente las pruebas y la construcción de la imagen.
+
+Reflexión personal:
+Este proyecto me permitió aplicar por primera vez una automatización completa de CI/CD. 
+Valoro el aprendizaje práctico porque entendí la conexión entre desarrollo, pruebas y despliegue automatizado, lo que considero esencial para cualquier entorno DevOps. 
+
+
+# Integrante B (elias) :
+Aprendizaje técnico:
+Aprendí a usar Docker Compose y Kubernetes para simular un entorno cloud de despliegue. 
+Pude entender cómo los manifiestos (Deployment, Service) ayudan a escalar y mantener la aplicación disponible. También mejoré mi manejo de curl y de las herramientas de validación de endpoints en entornos automatizados.
+
+Contribución personal:
+Me encargué de la parte de despliegue y orquestación. Creé los archivos docker-compose.yml y los manifiestos de Kubernetes con probes de salud y límites de recursos.
+Mi principal reto fue entender cómo probar el despliegue localmente con docker compose up y verificar la trazabilidad de los pipelines en Actions.
+
+Reflexión personal:
+Este proyecto me ayudó a comprender que un pipeline no solo automatiza tareas, sino que también asegura calidad y gobernanza del sistema. 
+Aprendí a trabajar en equipo con control de versiones y a mantener trazabilidad en GitHub, lo que considero una habilidad clave para mi formación profesional.
+
 
 ## Licencia
+Este proyecto se entrega únicamente con fines académicos para la asignatura DOY0101 - Ingeniería DevOps. 
 
-MIT (opcional de acuerdo a tu preferencia).
+No posee licencia de uso comercial.
+

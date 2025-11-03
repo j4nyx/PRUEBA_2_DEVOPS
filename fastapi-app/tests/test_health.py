@@ -1,10 +1,10 @@
-from httpx import AsyncClient
-from app.main import app
-import pytest
+from fastapi.testclient import TestClient
+from main import app
 
-@pytest.mark.asyncio
-async def test_health():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
-        r = await ac.get("/health")
-        assert r.status_code == 200
-        assert r.json() == {"status": "ok"}
+client = TestClient(app)
+
+def test_root():
+    response = client.get("/")
+    assert response.status_code == 200
+    assert response.json() == {"message": "Hola desde FastAPI en DevOps EP2"}
+

@@ -25,12 +25,14 @@ jobs:
         working-directory: fastapi-app
         run: pytest -q --disable-warnings
 
-  # Seguridad (Snyk) opcional, no bloquea si no hay token
+  # Seguridad con Snyk (opcional, no bloquea si falla o no hay token)
   security:
-    if: ${{ secrets.SNYK_TOKEN != '' }}
     runs-on: ubuntu-latest
     needs: test
     continue-on-error: true
+    env:
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+    if: ${{ env.SNYK_TOKEN != '' }}
     steps:
       - uses: actions/checkout@v4
       - name: Snyk Python Scan
@@ -38,8 +40,6 @@ jobs:
         with:
           args: "--sarif-file-output=snyk.sarif"
           command: test
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       - name: Upload SARIF to code scanning
         uses: github/codeql-action/upload-sarif@v3
         with:

@@ -29,18 +29,18 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     continue-on-error: true
-    env:
-      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - name: Snyk Python Scan
-        if: ${{ env.SNYK_TOKEN != '' }}
+        if: ${{ secrets.SNYK_TOKEN != '' }}
         uses: snyk/actions/python@master
         with:
           args: "--sarif-file-output=snyk.sarif"
           command: test
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       - name: Upload SARIF to code scanning
-        if: ${{ env.SNYK_TOKEN != '' }}
+        if: ${{ secrets.SNYK_TOKEN != '' }}
         uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: snyk.sarif
@@ -78,5 +78,4 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-
 

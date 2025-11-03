@@ -1,0 +1,20 @@
+name: Deploy (Compose)
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+    paths:
+      - "deploy/docker-compose.yml"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Start services
+        working-directory: deploy
+        run: docker compose up -d
+      - name: Wait and smoke test FastAPI
+        run: |
+          sleep 8
+          curl -fsS http://localhost:8000/health | jq .

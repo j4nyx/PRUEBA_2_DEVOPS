@@ -1,0 +1,5 @@
+services:
+  fastapi:
+    image: ghcr.io/${GITHUB_REPOSITORY_OWNER}/fastapi-app:latest
+    ports:
+      - "8000:8000"

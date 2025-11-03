@@ -5,12 +5,9 @@ permissions:
 
 on:
   push:
-    paths:
-      - "fastapi-app/**"
-      - ".github/workflows/ci-fastapi.yml"
+    branches: [ "main" ]
   pull_request:
-    paths:
-      - "fastapi-app/**"
+    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
@@ -28,7 +25,7 @@ jobs:
         working-directory: fastapi-app
         run: pytest -q --disable-warnings
 
-
+  # Seguridad (Snyk) opcional, no bloquea si no hay token
   security:
     if: ${{ secrets.SNYK_TOKEN != '' }}
     runs-on: ubuntu-latest
@@ -53,7 +50,6 @@ jobs:
     needs: test
     steps:
       - uses: actions/checkout@v4
-
 
       - name: Extract metadata (tags, labels)
         id: meta
@@ -82,3 +78,4 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+

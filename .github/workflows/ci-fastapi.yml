@@ -1,4 +1,8 @@
 name: CI FastAPI
+permissions:
+  contents: read
+  packages: write
+
 on:
   push:
     paths:

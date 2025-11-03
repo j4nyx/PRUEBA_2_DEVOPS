@@ -1,17 +1,8 @@
-# Python
 __pycache__/
-*.py[cod]
-*.egg-info/
-.venv/
+*.pyc
+*.pyo
+*.pytest_cache/
 .env
-.pytest_cache/
-
-# OS
-.DS_Store
-
-# Docker
-*.log
-
-# IDE
 .vscode/
 .idea/
+.DS_Store
